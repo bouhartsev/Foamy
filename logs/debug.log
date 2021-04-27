@@ -1,0 +1,9 @@
+INFO 2021-04-27 22:51:56,255 autoreload 11668 20776 Watching for file changes with StatReloader
+DEBUG 2021-04-27 22:51:56,256 autoreload 11668 20776 Waiting for apps ready_event.
+DEBUG 2021-04-27 22:51:56,260 autoreload 11668 20776 Apps ready_event triggered. Sending autoreload_started signal.
+DEBUG 2021-04-27 22:51:56,297 autoreload 11668 20776 Watching dir D:\1 курс\ПД\Foamy\locale with glob **/*.mo.
+DEBUG 2021-04-27 22:51:56,379 utils 11668 13404 (0.000) 
+            SELECT name, type FROM sqlite_master
+            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
+            ORDER BY name; args=None
+DEBUG 2021-04-27 22:51:56,384 utils 11668 13404 (0.016) SELECT "django_migrations"."id", "django_migrations"."app", "django_migrations"."name", "django_migrations"."applied" FROM "django_migrations"; args=()
