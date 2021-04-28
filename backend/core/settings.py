@@ -45,6 +45,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
+    'music.apps.MusicConfig',
 ]
 
 MIDDLEWARE = [
@@ -57,7 +59,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'backend.urls'
+ROOT_URLCONF = 'core.urls'
 
 TEMPLATES = [
     {
@@ -75,7 +77,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'backend.wsgi.application'
+WSGI_APPLICATION = 'core.wsgi.application'
 
 
 # Database
@@ -111,7 +113,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
-LANGUAGE_CODE = 'ru-RU'
+LANGUAGE_CODE = 'en-EN'
 
 TIME_ZONE = 'Europe/Moscow'
 
@@ -161,6 +163,8 @@ LOGGING = {
         }
     }
 }
+
+X_FRAME_OPTIONS = 'SAMEORIGIN'
 
 JAZZMIN_SETTINGS = {
     # title of the window (Will default to current_admin_site.site_title if absent or None)
@@ -237,15 +241,15 @@ JAZZMIN_SETTINGS = {
     "hide_models": [],
 
     # List of apps (and/or models) to base side menu ordering off of (does not need to contain all apps/models)
-    # "order_with_respect_to": ["auth", "books", "books.author", "books.book"],
+    # "order_with_respect_to": ["music", "auth", ],
 
     # Custom links to append to app groups, keyed on app name
     # "custom_links": {
-    #     "books": [{
+    #     "music": [{
     #         "name": "Make Messages", 
     #         "url": "make_messages", 
     #         "icon": "fas fa-comments",
-    #         "permissions": ["books.view_book"]
+    #         "permissions": ["music.view_book"]
     #     }]
     # },
 
@@ -255,6 +259,8 @@ JAZZMIN_SETTINGS = {
         "auth": "fas fa-users-cog",
         "auth.user": "fas fa-user",
         "auth.Group": "fas fa-users",
+        "music.Track": "fas fa-music",
+        "music.Artist": "fas fa-microphone-alt",
     },
     # Icons that are used when one is not manually specified
     "default_icon_parents": "fas fa-chevron-circle-right",
@@ -264,7 +270,7 @@ JAZZMIN_SETTINGS = {
     # Related Modal #
     #################
     # Use modals instead of popups
-    "related_modal_active": False,
+    "related_modal_active": True,
 
     #############
     # UI Tweaks #
@@ -289,15 +295,14 @@ JAZZMIN_SETTINGS = {
     "changeform_format_overrides": {"auth.user": "collapsible", "auth.group": "vertical_tabs"},
     # Add a language dropdown into the admin
     # "language_chooser": True,
-    "show_ui_builder": True,
+
+    # "show_ui_builder": True,
 }
 
 JAZZMIN_UI_TWEAKS = {
     "accent": "accent-info",
     "navbar": "navbar-black navbar-dark",
-    # "navbar_fixed": True,
-    # "brand_colour": "white",
     "sidebar_fixed": True,
     "actions_sticky_top": True,
-    "theme": "superhero",
+    "theme": "solar",
 }
