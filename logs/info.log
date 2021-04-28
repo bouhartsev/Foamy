@@ -1299,3 +1299,4 @@ INFO 2021-04-28 14:45:27,674 basehttp 18168 7036 "GET /static/vendor/fontawesome
 INFO 2021-04-28 14:45:27,880 basehttp 18168 20932 "GET /static/vendor/adminlte/img/AdminLTELogo.png HTTP/1.1" 200 2637
 INFO 2021-04-28 14:45:59,491 autoreload 18168 10292 D:\1 курс\ПД\Foamy\backend\settings.py changed, reloading.
 INFO 2021-04-28 14:46:00,639 autoreload 4484 10648 Watching for file changes with StatReloader
+INFO 2021-04-28 15:05:39,976 autoreload 10904 8936 Watching for file changes with StatReloader
