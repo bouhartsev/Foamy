@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
+import os
 import environ
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -128,6 +129,20 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# Vue project location
+FRONTEND_DIR = os.path.join(BASE_DIR, 'frontend')
+
+# Vue assets directory (assetsDir)
+STATICFILES_DIRS = [
+    os.path.join(FRONTEND_DIR, 'dist/static'),
+]
+
+
+# Webpack output location containing Vue index.html file (outputDir)
+TEMPLATES[0]['DIRS'] += [
+    os.path.join(FRONTEND_DIR, 'dist'),
+]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
