@@ -1,12 +1,14 @@
 <template>
   <div>
-    <h1>This is an about page</h1>
+    <h1>404</h1>
+    <p><b>Page not found!</b></p>
+    <p>Check URL</p>
   </div>
 </template>
 
 <script>
 export default {
-    name: "About",
+    name: "Error404",
     components: this,
 };
 </script>

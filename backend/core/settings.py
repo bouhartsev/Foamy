@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 from pathlib import Path
 import os
 import environ
+import mimetypes
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -47,10 +48,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'corsheaders',
     'music.apps.MusicConfig',
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -65,7 +68,7 @@ ROOT_URLCONF = 'core.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['./frontend/dist'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -128,21 +131,27 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
-STATIC_URL = '/static/'
-
 # Vue project location
-FRONTEND_DIR = os.path.join(BASE_DIR, 'frontend')
+FRONTEND_DIR = './frontend/'
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = './static/media/'
+
+STATIC_URL = '/static/'
+STATIC_ROOT = './static/'
 
 # Vue assets directory (assetsDir)
 STATICFILES_DIRS = [
     os.path.join(FRONTEND_DIR, 'dist/static'),
+    # os.path.join(FRONTEND_DIR, 'dist'),
 ]
 
 
 # Webpack output location containing Vue index.html file (outputDir)
-TEMPLATES[0]['DIRS'] += [
-    os.path.join(FRONTEND_DIR, 'dist'),
-]
+# TEMPLATES[0]['DIRS'] += [
+#     os.path.join(FRONTEND_DIR, 'dist'),
+# ]
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
@@ -321,3 +330,10 @@ JAZZMIN_UI_TWEAKS = {
     "actions_sticky_top": True,
     "theme": "solar",
 }
+
+CORS_ORIGIN_WHITELIST = [
+    'http://localhost:8000',
+    'http://localhost:8080',
+]
+
+mimetypes.add_type("text/javascript", ".js", True)
