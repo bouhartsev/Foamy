@@ -337,3 +337,9 @@ CORS_ORIGIN_WHITELIST = [
 ]
 
 mimetypes.add_type("text/javascript", ".js", True)
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticatedOrReadOnly',
+    ]
+}

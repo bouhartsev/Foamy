@@ -31,6 +31,7 @@ urlpatterns = [
 
     path("manifest.json", TemplateView.as_view(template_name="manifest.json", content_type="application/json"),),
     path("robots.txt", TemplateView.as_view(template_name="robots.txt", content_type="text/plain"),),
+    re_path(r'$', index),
     # path("service-worker.js", TemplateView.as_view(template_name="service-worker.js", content_type="application/javascript"),),
     # path("precache-manifest.4fd6f7882f5bc0f5a74218b617ad38b7.js", TemplateView.as_view(template_name="precache-manifest.4fd6f7882f5bc0f5a74218b617ad38b7.js", content_type="application/javascript"),),
 ]
