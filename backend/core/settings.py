@@ -198,7 +198,7 @@ JAZZMIN_SETTINGS = {
     "site_header": "Foamy Admin",
 
     # Logo to use for your site, must be present in static files, used for brand on top left
-    # "site_logo": "books/img/logo.png",
+    "site_logo": "img/icons/android-chrome-512x512.png",
 
     # CSS classes that are applied to the logo above
     "site_logo_classes": "img-circle",
@@ -225,17 +225,10 @@ JAZZMIN_SETTINGS = {
     # Links to put along the top menu
     "topmenu_links": [
 
-        # Url that gets reversed (Permissions can be added)
-        {"name": "Home",  "url": "admin:index", "permissions": ["auth.view_user"]},
-
-        # external url that opens in a new window (Permissions can be added)
-        {"name": "Support", "url": "https://github.com/farridav/django-jazzmin/issues", "new_window": True},
-
-        # model admin to link to (Permissions checked against model)
-        # {"model": "auth.User"},
-
-        # App with dropdown menu to all its models pages (Permissions checked against models)
-        # {"app": "books"},
+        {"name": "SITE",  "url": "/"},
+        {"name": "API",  "url": "/api/", "new_window": True},
+        {"name": "GitHub", "url": "//github.com/bouhartsev/Foamy/", "new_window": True},
+        {"name": "Author",  "url": "//bouhartsev.top", "new_window": True},
     ],
 
     #############

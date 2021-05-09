@@ -5,6 +5,10 @@ from .models import *
 
 # Register your models here.
 
+class ReleaseAdmin(admin.ModelAdmin):
+    pass
+class Genres(admin.ModelAdmin):
+    pass
 class ArtistAdmin(admin.ModelAdmin):
     pass
 class TrackAdmin(admin.ModelAdmin):
@@ -25,5 +29,6 @@ admin.site = MyAdminSite()
 
 admin.site.register(Track, TrackAdmin)
 admin.site.register(Artist, ArtistAdmin)
+admin.site.register(Release, ReleaseAdmin)
 admin.site.register(Group, GroupAdmin)
 admin.site.register(User, UserAdmin)
