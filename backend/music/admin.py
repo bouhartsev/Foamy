@@ -5,9 +5,11 @@ from .models import *
 
 # Register your models here.
 
-class ReleaseAdmin(admin.ModelAdmin):
+class PlaylistAdmin(admin.ModelAdmin):
     pass
-class Genres(admin.ModelAdmin):
+class GenreAdmin(admin.ModelAdmin):
+    pass
+class ReleaseAdmin(admin.ModelAdmin):
     pass
 class ArtistAdmin(admin.ModelAdmin):
     pass
@@ -30,5 +32,8 @@ admin.site = MyAdminSite()
 admin.site.register(Track, TrackAdmin)
 admin.site.register(Artist, ArtistAdmin)
 admin.site.register(Release, ReleaseAdmin)
+admin.site.register(Genre, GenreAdmin)
+admin.site.register(Playlist, PlaylistAdmin)
+
 admin.site.register(Group, GroupAdmin)
 admin.site.register(User, UserAdmin)

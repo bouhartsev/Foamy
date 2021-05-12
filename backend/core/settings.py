@@ -146,13 +146,6 @@ STATICFILES_DIRS = [
     # os.path.join(FRONTEND_DIR, 'dist'),
 ]
 
-
-# Webpack output location containing Vue index.html file (outputDir)
-# TEMPLATES[0]['DIRS'] += [
-#     os.path.join(FRONTEND_DIR, 'dist'),
-# ]
-
-
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
@@ -278,6 +271,9 @@ JAZZMIN_SETTINGS = {
         "auth.Group": "fas fa-users",
         "music.Track": "fas fa-music",
         "music.Artist": "fas fa-microphone-alt",
+        "music.Release": "fas fa-compact-disc",
+        "music.Genre": "fas fa-guitar",
+        "music.Playlist": "fas fa-clipboard-list",
     },
     # Icons that are used when one is not manually specified
     "default_icon_parents": "fas fa-chevron-circle-right",

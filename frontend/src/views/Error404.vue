@@ -1,6 +1,6 @@
 <template>
-    <div>
-        <h1>404</h1>
+    <div class="page404">
+        <h2>404</h2>
         <p><b>Page not found!</b></p>
         <p>Check URL</p>
     </div>
@@ -12,3 +12,13 @@ export default {
     components: this,
 };
 </script>
+
+<style scoped lang="scss">
+.page404 {
+    text-align: center;
+
+    h2 {
+        font-size: 5em;
+    }
+}
+</style>
