@@ -8,7 +8,7 @@ import vuetify from '@/plugins/vuetify'
 Vue.config.productionTip = false;
 
 Vue.prototype.$getDataAPI = function (pathAPI) {
-    this.$store.dispatch('getData', pathAPI);
+    return this.$store.dispatch('getData', pathAPI);
 };
 
 new Vue({

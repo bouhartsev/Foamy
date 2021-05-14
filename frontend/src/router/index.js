@@ -5,6 +5,7 @@ import Home from "../views/Home.vue";
 import About from "../views/About.vue";
 
 import Tracks from "../views/Tracks.vue";
+import Track from "../views/Track.vue";
 import Artists from "../views/Artists.vue";
 import Releases from "../views/Releases.vue";
 import Genres from "../views/Genres.vue";
@@ -28,8 +29,20 @@ const routes = [
 
     {
         path: "/tracks",
-        name: "Tracks",
-        component: Tracks,
+        component: {
+            render: (h) => h("router-view"),
+        },
+        children: [
+            {
+                path:"",
+                name: "Tracks",
+                component: Tracks,
+            },
+            {
+                path: "/tracks/:id",
+                component: Track,
+            },
+        ]
     },
     {
         path: "/artists",
@@ -67,7 +80,9 @@ const router = new VueRouter({
 
 router.beforeEach(async (to, from, next) => {
     //const { title } = to.meta;
-    const title = to.name;
+    let title = '';
+    // if (to.meta.breadcrumb) title = to.meta.breadcrumb;
+    title = to.name;
     const brand = "Foamy";
     document.title = `${title ? title + " | " : ""}${brand}`;
     next();
