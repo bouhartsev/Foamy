@@ -11,7 +11,9 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
+import os
 import environ
+import mimetypes
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -46,10 +48,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'corsheaders',
     'music.apps.MusicConfig',
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -64,7 +68,7 @@ ROOT_URLCONF = 'core.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['./frontend/dist'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -127,7 +131,20 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
+# Vue project location
+FRONTEND_DIR = './frontend/'
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = './static/media/'
+
 STATIC_URL = '/static/'
+STATIC_ROOT = './static/'
+
+# Vue assets directory (assetsDir)
+STATICFILES_DIRS = [
+    os.path.join(FRONTEND_DIR, 'dist/static'),
+    # os.path.join(FRONTEND_DIR, 'dist'),
+]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
@@ -174,7 +191,7 @@ JAZZMIN_SETTINGS = {
     "site_header": "Foamy Admin",
 
     # Logo to use for your site, must be present in static files, used for brand on top left
-    # "site_logo": "books/img/logo.png",
+    "site_logo": "img/icons/android-chrome-512x512.png",
 
     # CSS classes that are applied to the logo above
     "site_logo_classes": "img-circle",
@@ -201,17 +218,10 @@ JAZZMIN_SETTINGS = {
     # Links to put along the top menu
     "topmenu_links": [
 
-        # Url that gets reversed (Permissions can be added)
-        {"name": "Home",  "url": "admin:index", "permissions": ["auth.view_user"]},
-
-        # external url that opens in a new window (Permissions can be added)
-        {"name": "Support", "url": "https://github.com/farridav/django-jazzmin/issues", "new_window": True},
-
-        # model admin to link to (Permissions checked against model)
-        # {"model": "auth.User"},
-
-        # App with dropdown menu to all its models pages (Permissions checked against models)
-        # {"app": "books"},
+        {"name": "SITE",  "url": "/"},
+        {"name": "API",  "url": "/api/", "new_window": True},
+        {"name": "GitHub", "url": "//github.com/bouhartsev/Foamy/", "new_window": True},
+        {"name": "Author",  "url": "//bouhartsev.top", "new_window": True},
     ],
 
     #############
@@ -261,6 +271,9 @@ JAZZMIN_SETTINGS = {
         "auth.Group": "fas fa-users",
         "music.Track": "fas fa-music",
         "music.Artist": "fas fa-microphone-alt",
+        "music.Release": "fas fa-compact-disc",
+        "music.Genre": "fas fa-guitar",
+        "music.Playlist": "fas fa-clipboard-list",
     },
     # Icons that are used when one is not manually specified
     "default_icon_parents": "fas fa-chevron-circle-right",
@@ -305,4 +318,17 @@ JAZZMIN_UI_TWEAKS = {
     "sidebar_fixed": True,
     "actions_sticky_top": True,
     "theme": "solar",
+}
+
+CORS_ORIGIN_WHITELIST = [
+    'http://localhost:8000',
+    'http://localhost:8080',
+]
+
+mimetypes.add_type("text/javascript", ".js", True)
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticatedOrReadOnly',
+    ]
 }

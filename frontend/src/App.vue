@@ -1,32 +1,44 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view />
-  </div>
+    <v-app class="accent">
+        <v-hover v-slot="{ hover }">
+            <NavigationDrawer ref="nav" :navIsHover="hover"/>
+        </v-hover>
+
+        <AppBar></AppBar>
+
+        <v-main>
+            <v-container fluid>
+                <router-view/>
+            </v-container>
+        </v-main>
+    </v-app>
 </template>
 
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<script>
+import NavigationDrawer from "./components/NavigationDrawer";
+import AppBar from "./components/AppBar";
 
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
+export default {
+    components: {NavigationDrawer, AppBar},
+    // computed:{
+    //     theme(){
+    //         return (this.$vuetify.theme.dark) ? 'dark' : 'light';
+    //     }
+    // },
+    data() {
+        return {
+            openSearch: false,
+        }
+    },
+    created() {
+        //
+    },
+    methods: {
+        //
     }
-  }
 }
+</script>
+
+<style scoped lang="scss">
+
 </style>
