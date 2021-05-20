@@ -22,6 +22,10 @@ class MyAdminSite(admin.AdminSite):
     def get_app_list(self, request):
 
         app_dict = self._build_app_dict(request)
+        # reg = Track.objects.get_or_create(name='new',)
+        # reg.artists.set(Artist.objects.filter(id=1))
+        # reg.genre.set(Genre.objects.filter(id=1))
+        # reg.save()
 
         # app_list = sorted(app_dict.values(), key=lambda x: x['name'].lower())
         app_list = [app_item for app_item in app_dict.values()]
