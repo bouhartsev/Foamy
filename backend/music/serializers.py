@@ -16,6 +16,7 @@ class ReleaseSerializer(serializers.ModelSerializer):
 
     def update(self, instance, validated_data):
         instance.isSingle = True if validated_data.get('tracks', instance.tracks).lenght==1 else False
+        instance.poster = validated_data.get('poster', instance.poster) if validated_data.get('poster', instance.poster)!=None else 'release_placeholder.png'
         return instance
 
     class Meta:

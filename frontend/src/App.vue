@@ -39,6 +39,8 @@ export default {
 }
 </script>
 
-<style scoped lang="scss">
-
+<style lang="scss">
+h1 {
+    text-align: center;
+}
 </style>

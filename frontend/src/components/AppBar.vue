@@ -1,5 +1,6 @@
 <template>
-    <v-app-bar app color="secondary">
+    <v-app-bar app>
+<!--         color="secondary"-->
         <v-app-bar-nav-icon @click="$parent.$parent.$refs.nav.burger_click()"></v-app-bar-nav-icon>
         <v-tooltip bottom>
             <template v-slot:activator="{ on, attrs }">

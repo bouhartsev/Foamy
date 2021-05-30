@@ -5,11 +5,14 @@
         <p v-if="showError">Loading data error</p>
         <v-container v-if="showData">
             <v-layout row wrap>
-                <v-flex xs12 sm6 md4 v-for="track in tracks" :key="track.id" class="px-9 py-2" style="box-sizing: border-box;">
-                    <v-card link :to="{path: ''+track.id}">
+                <v-flex xs12 sm6 md4 class="px-9 py-2" style="box-sizing: border-box;" v-for="(track) in tracks" :key="track.id">
+                    <v-lazy transition="fade-transition">
+                    <v-card :href="''+track.id">
+                        <v-img :src="'https://bad.src/not/valid'" lazy-src="https://drasler.ru/wp-content/uploads/2019/05/Скачать-обои-на-рабочий-стол-музыка-рок014.jpg" height="200"></v-img>
                         <v-card-title>{{track.name}}</v-card-title>
-                        <v-card-subtitle><a v-for="(id, index) in track.artists" :href="'/artsits/'+id">{{ get_artist(id) }}<span v-if="index!=(track.artists.length-1)">, </span></a></v-card-subtitle>
+                        <v-card-subtitle><a title="Go to artist" v-for="(id, index) in track.artists" :href="'/artsits/'+id">{{ get_artist(id) }}<span v-if="index!=(track.artists.length-1)">, </span></a></v-card-subtitle>
                     </v-card>
+                    </v-lazy>
                 </v-flex>
             </v-layout>
         </v-container>
