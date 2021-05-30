@@ -9,19 +9,25 @@ export default new Vuex.Store({
         tracksAPI: {},
         artistsAPI: {},
 
-        anotherAPI: {}
+        anotherAPI: {},
+        dataAPI: {
+            'tracks': {},
+            'artists': {},
+        },
+        changed: 0,
     },
     mutations: {
         SET_DATA(state, data) {
-            // state.dataAPI[data[0]] = data[1];
-            switch (data[0]) {
-                case 'tracks':
-                    state.tracksAPI = data[1];
-                    break;
-                case 'artists':
-                    state.artistsAPI = data[1];
-                    break;
-            }
+            state.changed=state.changed+1;
+            state.dataAPI[data[0]] = data[1];
+            // switch (data[0]) {
+            //     case 'tracks':
+            //         state.tracksAPI = data[1];
+            //         break;
+            //     case 'artists':
+            //         state.artistsAPI = data[1];
+            //         break;
+            // }
         }
     },
     actions: {
@@ -32,7 +38,7 @@ export default new Vuex.Store({
                     console.log("Data '"+pathAPI+"' uploaded");
                 })
                 .catch(error => {
-                    commit('SET_DATA', [null, null]);
+                    commit('SET_DATA', [pathAPI, null]);
                     console.log("Data load error:", error.response);
                 });
         }
