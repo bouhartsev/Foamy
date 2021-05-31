@@ -7,6 +7,7 @@ import About from "../views/About.vue";
 import Tracks from "../views/Tracks.vue";
 import Track from "../views/Track.vue";
 import Artists from "../views/Artists.vue";
+import Artist from "../views/Artist.vue";
 import Releases from "../views/Releases.vue";
 import Genres from "../views/Genres.vue";
 import Playlists from "../views/Playlists.vue";
@@ -46,8 +47,20 @@ const routes = [
     },
     {
         path: "/artists",
-        name: "Artists",
-        component: Artists,
+        component: {
+            render: (h) => h("router-view"),
+        },
+        children: [
+            {
+                path:"",
+                name: "Artists",
+                component: Artists,
+            },
+            {
+                path: "/artists/:id",
+                component: Artist,
+            },
+        ]
     },
     {
         path: "/releases",

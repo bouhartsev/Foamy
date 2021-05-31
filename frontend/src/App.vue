@@ -40,7 +40,7 @@ export default {
 </script>
 
 <style lang="scss">
-h1 {
+h2 {
     text-align: center;
 }
 </style>

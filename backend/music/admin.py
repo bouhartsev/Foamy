@@ -10,6 +10,7 @@ class PlaylistAdmin(admin.ModelAdmin):
 class GenreAdmin(admin.ModelAdmin):
     pass
 class ReleaseAdmin(admin.ModelAdmin):
+    exclude = ('isSingle',)
     pass
 class ArtistAdmin(admin.ModelAdmin):
     pass

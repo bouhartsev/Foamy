@@ -32,7 +32,7 @@ export default new Vuex.Store({
     },
     actions: {
         getData({commit}, pathAPI) {
-            return axios.get("//127.0.0.1:8000/api/" + pathAPI + "/?format=json", {responseType: 'json',})
+            return axios.get(Vue.prototype.$serverAbsolutePath+"/api/" + pathAPI + "/?format=json", {responseType: 'json',})
                 .then(res => {
                     commit('SET_DATA', [pathAPI, res.data]);
                     console.log("Data '"+pathAPI+"' uploaded");
