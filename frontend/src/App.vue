@@ -31,7 +31,12 @@ export default {
         }
     },
     created() {
-        //
+        [
+            'tracks',
+            'artists',
+        ].forEach(path => {
+            this.$getDataAPI(path);
+        });
     },
     methods: {
         //
