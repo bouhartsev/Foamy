@@ -31,7 +31,11 @@ export default {
         }
     },
     created() {
-        //
+        [
+            'tracks',
+        ].forEach(path => {
+            this.$getDataAPI(path);
+        });
     },
     methods: {
         //
@@ -40,6 +44,7 @@ export default {
 </script>
 
 <style lang="scss">
+//@import "@/assets/variables.scss";
 h2 {
     text-align: center;
 }

@@ -1,4 +1,20 @@
+const VuetifyLoaderPlugin = require('vuetify-loader/lib/plugin')
+
 module.exports = {
+    configureWebpack: {
+        plugins: [
+            new VuetifyLoaderPlugin()
+        ],
+    },
+
+    // css: {
+    //     loaderOptions: {
+    //         sass: {
+    //             prependData: `@import "~@/assets/main.scss"`,
+    //         },
+    //     },
+    // },
+
     pwa: {
         name: "Foamy",
         short_name: "Foamy",
