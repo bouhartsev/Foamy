@@ -18,11 +18,28 @@ module.exports = {
     pwa: {
         name: "Foamy",
         short_name: "Foamy",
-        // manifestPath: "public/manifest.json"
+        // manifestPath: "site.webmanifest",
+        manifestOptions: {
+            "icons": [
+                {
+                    "src": "./static/img/icons/android-chrome-192x192.png",
+                    "sizes": "192x192",
+                    "type": "image/png"
+                },
+                {
+                    "src": "./static/img/icons/android-chrome-512x512.png",
+                    "sizes": "512x512",
+                    "type": "image/png"
+                }
+            ],
+            "background_color": "#ffffff",
+        },
+        themeColor: '#ffffff',
+        msTileColor: '#ffffff',
         iconPaths: {
             favicon32: 'static/img/icons/favicon-32x32.png',
             favicon16: 'static/img/icons/favicon-16x16.png',
-            appleTouchIcon: 'static/img/icons/apple-touch-icon-152x152.png',
+            appleTouchIcon: 'static/img/icons/apple-touch-icon.png',
             maskIcon: 'static/img/icons/safari-pinned-tab.svg',
             msTileImage: 'static/img/icons/msapplication-icon-144x144.png'
         }

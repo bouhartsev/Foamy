@@ -36,11 +36,7 @@ export default {
         },
     },
     mounted() {
-        [
-            'tracks',
-        ].forEach(path => {
-            this.$getDataAPI(path);
-        });
+        //
     },
     methods: {
         get_artist: function (artist) {
@@ -53,7 +49,7 @@ export default {
                 poster = release[0].poster;
             }
             // console.log(poster);
-            return (poster!='null')?poster:(this.$serverAbsolutePath+'/static/img/icons/favicon-32x32.png');
+            return (poster!='null')?poster:('/static/img/track_placeholder.png'); //this.$serverAbsolutePath+
         },
     }
 };
