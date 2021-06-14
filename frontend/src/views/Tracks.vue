@@ -48,7 +48,6 @@ export default {
             if (release.length>0) {
                 poster = release[0].poster;
             }
-            // console.log(poster);
             return (poster!='null')?poster:('/static/img/track_placeholder.png'); //this.$serverAbsolutePath+
         },
     }

@@ -6,28 +6,12 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
     state: {
-        tracksAPI: {},
-        artistsAPI: {},
-
-        anotherAPI: {},
-        dataAPI: {
-            'tracks': {},
-            'artists': {},
-        },
-        changed: 0,
+        dataAPI: {},
     },
     mutations: {
         SET_DATA(state, data) {
-            state.changed=state.changed+1;
-            state.dataAPI[data[0]] = data[1];
-            // switch (data[0]) {
-            //     case 'tracks':
-            //         state.tracksAPI = data[1];
-            //         break;
-            //     case 'artists':
-            //         state.artistsAPI = data[1];
-            //         break;
-            // }
+            // state.dataAPI[data[0]] = data[1];
+            Vue.set(state.dataAPI, data[0], data[1]);
         }
     },
     actions: {
@@ -39,9 +23,12 @@ export default new Vuex.Store({
                 })
                 .catch(error => {
                     commit('SET_DATA', [pathAPI, null]);
-                    console.log("Data load error:", error.response);
+                    // console.log("Data load error:", error.response);
                 });
-        }
+        },
+        setEmpty({commit}, pathAPI) {
+            commit('SET_DATA', [pathAPI, {}]);
+        },
     },
     modules: {},
 });

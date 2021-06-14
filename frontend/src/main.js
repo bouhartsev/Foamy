@@ -11,6 +11,7 @@ Vue.config.productionTip = false;
 
 Vue.prototype.$serverAbsolutePath = '//127.0.0.1:8000';
 Vue.prototype.$getDataAPI = function (pathAPI) {
+    this.$store.dispatch('setEmpty', pathAPI);
     return this.$store.dispatch('getData', pathAPI);
 };
 
