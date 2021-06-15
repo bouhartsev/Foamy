@@ -17,7 +17,7 @@ yarn-error.log*
 
 # Environments #
 .env
-env/ 
+env/
 venv/
 
 # Python # 

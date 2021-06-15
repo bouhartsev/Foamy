@@ -1,5 +1,5 @@
 <template>
-    <v-app class="accent">
+    <v-app>
         <v-hover v-slot="{ hover }">
             <NavigationDrawer ref="nav" :navIsHover="hover"/>
         </v-hover>
@@ -31,7 +31,12 @@ export default {
         }
     },
     created() {
-        //
+        [
+            'tracks',
+            'artists',
+        ].forEach(path => {
+            this.$getDataAPI(path);
+        });
     },
     methods: {
         //
@@ -39,6 +44,8 @@ export default {
 }
 </script>
 
-<style scoped lang="scss">
-
+<style lang="scss">
+h2 {
+    text-align: center;
+}
 </style>

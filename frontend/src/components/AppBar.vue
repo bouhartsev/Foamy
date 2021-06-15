@@ -1,5 +1,6 @@
 <template>
-    <v-app-bar app color="secondary">
+    <v-app-bar app>
+<!--         color="secondary"-->
         <v-app-bar-nav-icon @click="$parent.$parent.$refs.nav.burger_click()"></v-app-bar-nav-icon>
         <v-tooltip bottom>
             <template v-slot:activator="{ on, attrs }">
@@ -39,7 +40,7 @@
 
         <v-tooltip bottom>
             <template v-slot:activator="{ on, attrs }">
-                <v-btn icon @click="$vuetify.theme.dark=!$vuetify.theme.dark">
+                <v-btn icon @click="$vuetify.theme.dark=!$vuetify.theme.dark" exact v-bind="attrs" v-on="on">
                     <v-icon>mdi-theme-light-dark</v-icon>
                 </v-btn>
             </template>

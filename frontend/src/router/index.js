@@ -5,7 +5,9 @@ import Home from "../views/Home.vue";
 import About from "../views/About.vue";
 
 import Tracks from "../views/Tracks.vue";
+import Track from "../views/Track.vue";
 import Artists from "../views/Artists.vue";
+import Artist from "../views/Artist.vue";
 import Releases from "../views/Releases.vue";
 import Genres from "../views/Genres.vue";
 import Playlists from "../views/Playlists.vue";
@@ -28,13 +30,37 @@ const routes = [
 
     {
         path: "/tracks",
-        name: "Tracks",
-        component: Tracks,
+        component: {
+            render: (h) => h("router-view"),
+        },
+        children: [
+            {
+                path:"",
+                name: "Tracks",
+                component: Tracks,
+            },
+            {
+                path: "/tracks/:id",
+                component: Track,
+            },
+        ]
     },
     {
         path: "/artists",
-        name: "Artists",
-        component: Artists,
+        component: {
+            render: (h) => h("router-view"),
+        },
+        children: [
+            {
+                path:"",
+                name: "Artists",
+                component: Artists,
+            },
+            {
+                path: "/artists/:id",
+                component: Artist,
+            },
+        ]
     },
     {
         path: "/releases",
@@ -67,7 +93,9 @@ const router = new VueRouter({
 
 router.beforeEach(async (to, from, next) => {
     //const { title } = to.meta;
-    const title = to.name;
+    let title = '';
+    // if (to.meta.breadcrumb) title = to.meta.breadcrumb;
+    title = to.name;
     const brand = "Foamy";
     document.title = `${title ? title + " | " : ""}${brand}`;
     next();

@@ -5,7 +5,7 @@
                 <a href="/" style="color: inherit; text-decoration: inherit;">
                 <v-list-item-content>
                     <v-list-item-title class="title">
-                        <h1>Foamy </h1>
+                        <h1>F<span>o</span>amy </h1>
                     </v-list-item-title>
                     <v-list-item-subtitle style="text-transform: uppercase">for you</v-list-item-subtitle>
                 </v-list-item-content>
@@ -114,6 +114,15 @@ export default {
 
 <style scoped lang="scss" >
 
+@font-face {
+    font-family: 'Tchaikovsky';
+    src: url('~@/assets/Tchaikovsky.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'SongFont';
+    src: url('~@/assets/SongFont.ttf') format('truetype');
+}
+
 .v-application--is-ltr .v-list-item__action:first-child, .v-application--is-ltr .v-list-item__icon:first-child {
     margin-right: 15px;
 }
@@ -127,6 +136,19 @@ export default {
     a {
         color: inherit;
     }
+}
+
+h1 {
+    font-size: 2.5em;
+    font-family: 'SongFont';
+}
+
+h1 span {
+    font-family: 'Tchaikovsky';
+    margin-right: -0.25em;
+    vertical-align: bottom;
+    color: #00bfff;
+
 }
 
 </style>

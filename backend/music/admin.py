@@ -10,6 +10,7 @@ class PlaylistAdmin(admin.ModelAdmin):
 class GenreAdmin(admin.ModelAdmin):
     pass
 class ReleaseAdmin(admin.ModelAdmin):
+    exclude = ('isSingle',)
     pass
 class ArtistAdmin(admin.ModelAdmin):
     pass
@@ -17,8 +18,6 @@ class TrackAdmin(admin.ModelAdmin):
     pass
 
 class MyAdminSite(admin.AdminSite):
-    # index_title = 'Administrator Panel'
-
     def get_app_list(self, request):
 
         app_dict = self._build_app_dict(request)

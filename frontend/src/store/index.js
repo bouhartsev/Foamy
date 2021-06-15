@@ -10,21 +10,25 @@ export default new Vuex.Store({
     },
     mutations: {
         SET_DATA(state, data) {
-            state.dataAPI = data;
+            // state.dataAPI[data[0]] = data[1];
+            Vue.set(state.dataAPI, data[0], data[1]);
         }
     },
     actions: {
         getData({commit}, pathAPI) {
-            axios.get("//127.0.0.1:8000/api/" + pathAPI + "/?format=json", {responseType: 'json',})
+            return axios.get(Vue.prototype.$serverAbsolutePath+"/api/" + pathAPI + "/?format=json", {responseType: 'json',})
                 .then(res => {
-                    commit('SET_DATA', res.data);
-                    console.log("Data uploaded");
+                    commit('SET_DATA', [pathAPI, res.data]);
+                    console.log("Data '"+pathAPI+"' uploaded");
                 })
                 .catch(error => {
-                    commit('SET_DATA', null);
-                    console.log("Data load error:", error.response);
+                    commit('SET_DATA', [pathAPI, null]);
+                    // console.log("Data load error:", error.response);
                 });
-        }
+        },
+        setEmpty({commit}, pathAPI) {
+            commit('SET_DATA', [pathAPI, {}]);
+        },
     },
     modules: {},
 });

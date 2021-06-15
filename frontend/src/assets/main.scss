@@ -1,0 +1,5 @@
+@import '~vuetify/src/styles/main.sass';
+$font-size-root: 10px;
+$material-light: map-merge($material-light, (
+  'background': black
+));

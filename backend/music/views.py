@@ -8,7 +8,7 @@ from .models import *
 
 class PlaylistViewSet(viewsets.ModelViewSet):
     serializer_class = PlaylistSerializer
-    queryset = Release.objects.all()
+    queryset = Playlist.objects.all()
 
 class GenreViewSet(viewsets.ModelViewSet):
     serializer_class = GenreSerializer
