@@ -148,7 +148,6 @@ h1 span {
     margin-right: -0.25em;
     vertical-align: bottom;
     color: #00bfff;
-
 }
 
 </style>

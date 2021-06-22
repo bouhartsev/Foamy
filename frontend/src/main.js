@@ -15,6 +15,22 @@ Vue.prototype.$getDataAPI = function (pathAPI) {
     return this.$store.dispatch('getData', pathAPI);
 };
 
+Vue.mixin({
+    methods: {
+        get_poster: function (instance, placeholder = 'track.png') {
+            let image = 'null';
+            if (instance.length > 0) {
+                image = instance[0].imageURL;
+            }
+            return (image != 'null') ? poster : ('/static/img/placeholder/' + placeholder);
+        },
+        get_artist: function (artist) {
+            if (artist.pseudonym!="") return artist.pseudonym;
+            else return artist.name;
+        },
+    }
+})
+
 new Vue({
     router,
     store,

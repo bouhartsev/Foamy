@@ -6,15 +6,38 @@ from .models import *
 # Register your models here.
 
 class PlaylistAdmin(admin.ModelAdmin):
+    list_display = ('name',)
+    search_fields = ('name',)
+    list_filter = ('name',)
+    filter_horizontal = ()
     pass
+
 class GenreAdmin(admin.ModelAdmin):
+    list_display = ('name',)
+    search_fields = ('name',)
+    list_filter = ('name',)
+    filter_horizontal = ()
     pass
+
 class ReleaseAdmin(admin.ModelAdmin):
-    exclude = ('isSingle',)
+    list_display = ('name',)
+    search_fields = ('name',)
+    list_filter = ('name',)
+    filter_horizontal = ()
     pass
+
 class ArtistAdmin(admin.ModelAdmin):
+    list_display = ('name',)
+    search_fields = ('name',)
+    list_filter = ('name',)
+    filter_horizontal = ()
     pass
+
 class TrackAdmin(admin.ModelAdmin):
+    list_display = ('name',)
+    search_fields = ('name',)
+    list_filter = ('name',)
+    filter_horizontal = ()
     pass
 
 class MyAdminSite(admin.AdminSite):

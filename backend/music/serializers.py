@@ -12,6 +12,8 @@ class GenreSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class ReleaseSerializer(serializers.ModelSerializer):
+    # releaseImage = serializers.URLField(default=imageURL)
+
     class Meta:
         model = Release
         fields = '__all__'
@@ -19,7 +21,7 @@ class ReleaseSerializer(serializers.ModelSerializer):
 class ReleaseSerializerForOther(serializers.ModelSerializer):
     class Meta:
         model = Release
-        fields = ['id', 'name', 'poster']
+        fields = ['id', 'name', 'imageURL']
 
 class ArtistSerializer(serializers.ModelSerializer):
     tracks = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
@@ -37,6 +39,7 @@ class TrackSerializer(serializers.ModelSerializer):
     release = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
     releaseData = ReleaseSerializerForOther(source='release', many=True)
     artistsData = ArtistSerializerForOther(source='artists', many=True)
+    #add genre data!
 
     class Meta:
         model = Track
