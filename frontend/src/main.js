@@ -22,6 +22,7 @@ Vue.mixin({
             if (instance.length > 0) {
                 image = instance[0].imageURL;
             }
+            // TODO: make for artists
             return (image != 'null') ? poster : ('/static/img/placeholder/' + placeholder);
         },
         get_artist: function (artist) {

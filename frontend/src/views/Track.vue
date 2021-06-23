@@ -27,9 +27,6 @@ export default {
     mounted() {
         this.$getDataAPI('tracks/'+this.$route.params.id);
     },
-    methods: {
-
-    }
 }
 </script>
 
