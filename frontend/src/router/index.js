@@ -41,6 +41,7 @@ const routes = [
             },
             {
                 path: "/tracks/:id",
+                name: "Track",
                 component: Track,
             },
         ]
@@ -58,6 +59,7 @@ const routes = [
             },
             {
                 path: "/artists/:id",
+                name: "Artist",
                 component: Artist,
             },
         ]

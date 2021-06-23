@@ -25,6 +25,7 @@ export default {
     //         return (this.$vuetify.theme.dark) ? 'dark' : 'light';
     //     }
     // },
+    // TODO: make theme session and browser default
     data() {
         return {
             openSearch: false,

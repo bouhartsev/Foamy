@@ -16,7 +16,7 @@ import environ
 import mimetypes
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
 env = environ.Env(
     # set casting, default value
@@ -34,11 +34,9 @@ SECRET_KEY = env("SECRET_KEY", default="unsafe-secret-key")
 DEBUG = env('DEBUG')
 # DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1',]
-
+ALLOWED_HOSTS = ['127.0.0.1','foamy.std-1374.ist.mospolytech.ru',]
 
 # Application definition
-
 INSTALLED_APPS = [
     'jazzmin',
     'django.contrib.admin',
@@ -68,7 +66,7 @@ ROOT_URLCONF = 'core.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['./frontend/dist'],
+        'DIRS': [BASE_DIR/'frontend/dist'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -90,7 +88,7 @@ WSGI_APPLICATION = 'core.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': BASE_DIR / 'backend/foamy.db',
     }
 }
 
@@ -132,18 +130,17 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 # Vue project location
-FRONTEND_DIR = './frontend/'
+FRONTEND_DIR = BASE_DIR/'frontend/'
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = './static/media/'
+MEDIA_ROOT = BASE_DIR/'static/media/'
 
 STATIC_URL = '/static/'
-STATIC_ROOT = './static/'
+STATIC_ROOT = BASE_DIR/'static/'
 
 # Vue assets directory (assetsDir)
 STATICFILES_DIRS = [
     os.path.join(FRONTEND_DIR, 'dist/static'),
-    # os.path.join(FRONTEND_DIR, 'dist'),
 ]
 
 # Default primary key field type
@@ -163,13 +160,13 @@ LOGGING = {
         'fileDebug': {
             'level': 'DEBUG',
             'class': 'logging.FileHandler',
-            'filename': './logs/debug.log',
+            'filename': BASE_DIR/'logs/debug.log',
             'formatter': 'UsualFormat'
         },
         'fileInfo': {
             'level': 'INFO',
             'class': 'logging.FileHandler',
-            'filename': './logs/info.log',
+            'filename': BASE_DIR/'logs/info.log',
             'formatter': 'UsualFormat'
         }
     },
@@ -323,6 +320,7 @@ JAZZMIN_UI_TWEAKS = {
 CORS_ORIGIN_WHITELIST = [
     'http://localhost:8000',
     'http://localhost:8080',
+    'http://foamy.std-1374.ist.mospolytech.ru',
 ]
 
 mimetypes.add_type("text/javascript", ".js", True)
