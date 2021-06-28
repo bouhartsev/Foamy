@@ -5,11 +5,11 @@
 
 ![status: development](https://img.shields.io/badge/status-development-red)![version: alpha](https://img.shields.io/badge/version-alpha-brightgreen)![language count](https://img.shields.io/github/languages/count/bouhartsev/Foamy)
 
-**['Foamy']()** is the сatalog of musical compositions.  
-Author: [Matvey Bouhartsev](bouhartsev.top)  
-Made by order of the [Moscow Polytechnic University](mospolytech.ru).
+**['Foamy'](http://foamy.std-1374.ist.mospolytech.ru/)** is the сatalog of musical compositions.  
+Author: [Matvey Bouhartsev](//bouhartsev.top)  
+Made by order of the [Moscow Polytechnic University](//mospolytech.ru).
 
-**[http://foamy.std-1374.ist.mospolytech.ru/]()**
+**[http://foamy.std-1374.ist.mospolytech.ru/](http://foamy.std-1374.ist.mospolytech.ru/)**
 
 <br/>
 
@@ -103,6 +103,8 @@ python .\backend\manage.py collectstatic
 <br/>
 
 ____
+
+<br/>
 
 ## Technologies used
 
