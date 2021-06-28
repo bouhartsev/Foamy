@@ -1,7 +1,0 @@
-Fonts:
-'Please write me a sing' ByTheButterfly
-'Tchaikovsky' JoannaVu
-
-Vuetify
-Vue
-Django

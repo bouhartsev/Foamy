@@ -18,8 +18,8 @@ module.exports = {
     pwa: {
         name: "Foamy",
         short_name: "Foamy",
-        // manifestPath: "site.webmanifest",
         manifestOptions: {
+            "start_url": 'http://foamy.std-1374.ist.mospolytech.ru',
             "icons": [
                 {
                     "src": "./static/img/icons/android-chrome-192x192.png",
@@ -43,6 +43,15 @@ module.exports = {
             maskIcon: 'static/img/icons/safari-pinned-tab.svg',
             msTileImage: 'static/img/icons/msapplication-icon-144x144.png'
         }
+    },
+
+    devServer: {
+        proxy: {
+            '^/api/': {
+                target: 'http://127.0.0.1:8000/',
+                ws: false,
+            },
+        },
     },
 
     // publicPath: '/',
