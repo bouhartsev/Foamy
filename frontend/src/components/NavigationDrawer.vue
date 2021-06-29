@@ -3,12 +3,11 @@
         <v-list>
             <v-list-item>
                 <a href="/" style="color: inherit; text-decoration: inherit;">
-                <v-list-item-content>
                     <v-list-item-title class="title">
-                        <h1>F<span>o</span>amy </h1>
+                        <h1 v-if="(!navIsOnHover || navIsHover)&&footerVisible">F<span>o</span>amy </h1>
+                        <h1 v-else><span>o</span></h1>
                     </v-list-item-title>
-                    <v-list-item-subtitle style="text-transform: uppercase">for you</v-list-item-subtitle>
-                </v-list-item-content>
+                    <v-list-item-subtitle :style="'text-transform: uppercase; opacity: '+(((!navIsOnHover || navIsHover)&&footerVisible)?'1':'0')">for you</v-list-item-subtitle>
                 </a>
             </v-list-item>
         </v-list>
@@ -148,6 +147,10 @@ h1 span {
     margin-right: -0.25em;
     vertical-align: bottom;
     color: #00bfff;
+}
+
+.title {
+    overflow:visible;
 }
 
 </style>

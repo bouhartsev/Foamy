@@ -8,37 +8,27 @@ from .models import *
 class PlaylistAdmin(admin.ModelAdmin):
     list_display = ('name',)
     search_fields = ('name',)
-    list_filter = ('name',)
-    filter_horizontal = ()
-    pass
 
 class GenreAdmin(admin.ModelAdmin):
     list_display = ('name',)
     search_fields = ('name',)
-    list_filter = ('name',)
-    filter_horizontal = ()
-    pass
 
 class ReleaseAdmin(admin.ModelAdmin):
     list_display = ('name',)
     search_fields = ('name',)
-    list_filter = ('name',)
-    filter_horizontal = ()
-    pass
 
 class ArtistAdmin(admin.ModelAdmin):
-    list_display = ('name',)
+    list_display = ('name','type')
     search_fields = ('name',)
-    list_filter = ('name',)
-    filter_horizontal = ()
-    pass
+    list_filter = ('type',)
 
 class TrackAdmin(admin.ModelAdmin):
-    list_display = ('name',)
-    search_fields = ('name',)
-    list_filter = ('name',)
-    filter_horizontal = ()
-    pass
+    list_display = ('name', 'get_genres', 'duration')
+    search_fields = ('name','duration')
+
+    def get_genres(self, obj):
+        return ", ".join([g.name for g in obj.genre.all()])
+    get_genres.short_description = "Genres"
 
 class MyAdminSite(admin.AdminSite):
     def get_app_list(self, request):
