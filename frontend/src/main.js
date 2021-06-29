@@ -20,10 +20,10 @@ Vue.mixin({
         get_poster: function (instance, placeholder = 'track.png') {
             let image = 'null';
             if (instance.length > 0) {
-                image = instance[0].imageURL;
+                if ((''+instance[0].imageURL).indexOf('http')!=-1) image = instance[0].imageURL;
+                else if ((''+instance[0].image).indexOf('http')!=-1) image = instance[0].image;
             }
-            // TODO: make for artists
-            return (image != 'null') ? poster : ('/static/img/placeholder/' + placeholder);
+            return (image != 'null') ? image : ('/static/img/placeholder/' + placeholder);
         },
         get_artist: function (artist) {
             if (artist.pseudonym!="") return artist.pseudonym;

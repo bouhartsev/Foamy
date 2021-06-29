@@ -1,7 +1,6 @@
 from django.db import models
 
 # Create your models here.
-# TODO: replace data in database: crashed names and thumb images
 
 class Playlist(models.Model):
     name = models.CharField(max_length=255)
@@ -23,7 +22,6 @@ class Release(models.Model):
 
     image = models.ImageField(upload_to='img/release', blank=True, null=True)
     imageURL = models.URLField(blank=True, null=True)
-    # TODO: make getting imageURL from image if empty
 
     def __str__(self):
         return str(self.name)
@@ -37,7 +35,6 @@ class Artist(models.Model):
 
     image = models.ImageField(upload_to='img/artist', blank=True, null=True)
     imageURL = models.URLField(blank=True,null=True)
-    # TODO: make getting imageURL from image if empty
 
     def __str__(self):
         if self.pseudonym!='':

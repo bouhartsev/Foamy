@@ -6,7 +6,7 @@
         <v-container v-else>
             <v-layout row wrap>
                 <v-flex xs12 sm6 md4 class="px-9 py-2" style="box-sizing: border-box;" v-for="(track) in tracks" :key="track.id">
-                    <v-lazy min-height="200" :options="{ threshold: .5 }">
+                    <v-lazy min-height="200" :options="{ threshold: .1 }">
                     <v-card link :to="'/tracks/'+track.id" class="">
                         <v-img :src="get_poster(track.releaseData, 'track.png')" aspect-ratio="1.5"></v-img>
                         <v-card-title>{{track.name}}</v-card-title>
@@ -17,19 +17,18 @@
             </v-layout>
         </v-container>
     </div>
-
 </template>
 
 <script>
 export default {
     name: "Tracks",
     components: this,
-    data() {
-        return {
-            showData: false,
-            showError: false,
-        }
-    },
+    // data() {
+    //     return {
+    //         showData: false,
+    //         showError: false,
+    //     }
+    // },
     computed: {
         tracks() {
             return this.$store.state.dataAPI['tracks'];

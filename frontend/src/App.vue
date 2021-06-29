@@ -35,6 +35,9 @@ export default {
         [
             'tracks',
             'artists',
+            'releases',
+            'genres',
+            'playlists',
         ].forEach(path => {
             this.$getDataAPI(path);
         });
@@ -48,5 +51,9 @@ export default {
 <style lang="scss">
 h2 {
     text-align: center;
+}
+
+.v-card__title {
+    word-break: break-word;
 }
 </style>

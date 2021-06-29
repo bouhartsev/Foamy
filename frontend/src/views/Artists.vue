@@ -6,9 +6,9 @@
         <v-container>
             <v-layout row wrap>
                 <v-flex xs12 sm6 md4 class="px-9 py-2" style="box-sizing: border-box;" v-for="(artist) in artists" :key="artist.id">
-                    <v-lazy transition="fade-transition">
+                    <v-lazy min-height="200" :options="{ threshold: .1 }">
                     <v-card link :to="'/artists/'+artist.id">
-                        <v-img :src="artist.photo" height="200"></v-img>
+                        <v-img :src="get_poster([artist,], 'artist.png')" aspect-ratio="1.5"></v-img>
                         <v-card-title v-if="artist.pseudonym==''">{{artist.name}}</v-card-title>
                         <v-card-title v-else>{{artist.pseudonym}}</v-card-title>
                         <v-card-subtitle v-if="artist.pseudonym!=''">{{artist.name}}</v-card-subtitle>

@@ -2,7 +2,7 @@
     <div>
         <h2>Track</h2>
         <p v-if="trackData === null">Loading data error</p>
-        <v-container v-if="trackData !== undefined && 'id' in trackData">
+        <v-container v-else-if="trackData !== undefined && 'id' in trackData">
             <v-img :src="get_poster(trackData.releaseData, 'track.png')"></v-img>
             <h3 class="container__title">"{{ trackData.name }}"</h3>
             <p>Artists: <router-link title="Go to artist" v-for="(artist, index) in trackData.artistsData" :key="index" :to="'/artists/'+artist.id">{{ get_artist(artist) }}<span v-if="index!=(trackData.artistsData.length-1)">, </span></router-link></p>
