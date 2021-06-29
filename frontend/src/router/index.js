@@ -9,8 +9,11 @@ import Track from "../views/Track.vue";
 import Artists from "../views/Artists.vue";
 import Artist from "../views/Artist.vue";
 import Releases from "../views/Releases.vue";
+import Release from "../views/Releases.vue";
 import Genres from "../views/Genres.vue";
+import Genre from "../views/Genre.vue";
 import Playlists from "../views/Playlists.vue";
+import Playlist from "../views/Playlist.vue";
 
 import Error404 from "../views/Error404.vue";
 
@@ -66,18 +69,58 @@ const routes = [
     },
     {
         path: "/releases",
-        name: "Releases",
-        component: Releases,
+        component: {
+            render: (h) => h("router-view"),
+        },
+        children: [
+            {
+                path:"",
+                name: "Releases",
+                component: Releases,
+            },
+            {
+                path: "/releases/:id",
+                name: "Release",
+                component: Release,
+            },
+        ]
+
     },
     {
         path: "/genres",
-        name: "Genres",
-        component: Genres,
+        component: {
+            render: (h) => h("router-view"),
+        },
+        children: [
+            {
+                path:"",
+                name: "Genres",
+                component: Genres,
+            },
+            {
+                path: "/genres/:id",
+                name: "Genre",
+                component: Genre,
+            },
+        ]
     },
     {
         path: "/playlists",
-        name: "Playlists",
-        component: Playlists,
+        component: {
+            render: (h) => h("router-view"),
+        },
+        children: [
+            {
+                path:"",
+                name: "Playlists",
+                component: Playlists,
+            },
+            {
+                path: "/playlists/:id",
+                name: "Playlist",
+                component: Playlist,
+            },
+        ]
     },
 
     {
