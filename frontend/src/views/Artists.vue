@@ -1,31 +1,25 @@
 <template>
-    <div>
-        <h2>Artists</h2>
-        <p v-if="artists === null">Loading data error</p>
-        <p v-else-if="artists.length === 0">There are no artists.</p>
-        <v-container>
-            <v-layout row wrap>
-                <v-flex xs12 sm6 md4 class="px-9 py-2" style="box-sizing: border-box;" v-for="(artist) in artists" :key="artist.id">
-                    <v-lazy min-height="200" :options="{ threshold: .1 }">
-                    <v-card link :to="'/artists/'+artist.id">
-                        <v-img :src="get_poster([artist,], 'artist.png')" aspect-ratio="1.5"></v-img>
-                        <v-card-title v-if="artist.pseudonym==''">{{artist.name}}</v-card-title>
-                        <v-card-title v-else>{{artist.pseudonym}}</v-card-title>
-                        <v-card-subtitle v-if="artist.pseudonym!=''">{{artist.name}}</v-card-subtitle>
-                    </v-card>
-                    </v-lazy>
-                </v-flex>
-            </v-layout>
-        </v-container>
-    </div>
+    <Cards :data="requestedData" image_placeholder="artist.png" :url="request">
+        <template #heading>Artists</template>
+    </Cards>
 </template>
 
 <script>
+import Cards from "../components/Cards";
+
 export default {
     name: "Artists",
+    components: {
+        Cards,
+    },
+    data() {
+        return {
+            request: 'artists',
+        }
+    },
     computed: {
-        artists() {
-            return this.$store.state.dataAPI['artists'];
+        requestedData() {
+            return this.$store.state.dataAPI[this.request];
         },
     },
 }

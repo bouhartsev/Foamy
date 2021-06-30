@@ -17,17 +17,19 @@ export default {
     components: {
         Instance,
     },
+    data() {
+        return {
+            request: 'artists/',
+        }
+    },
     computed: {
         artistData() {
-            return this.$store.state.dataAPI['artists/'+this.$route.params.id];
+            return this.$store.state.dataAPI[this.request];
         },
     },
     mounted() {
-        this.$getDataAPI('artists/'+this.$route.params.id);
+        this.request+=this.$route.params.id;
+        this.$getDataAPI(this.request);
     },
 }
 </script>
-
-<style scoped>
-
-</style>

@@ -14,6 +14,9 @@ class PlaylistSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class GenreSerializer(serializers.ModelSerializer):
+    tracks = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
+    tracksData = TrackSerializerForOther(source='tracks', many=True)
+
     class Meta:
         model = Genre
         fields = '__all__'

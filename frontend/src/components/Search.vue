@@ -1,7 +1,7 @@
 <template>
     <v-text-field
         hide-details
-        label="Search"
+        label="Search music"
         @keyup.enter="search()"
         class="search_field"
         :autofocus="autofocus"
@@ -23,7 +23,8 @@ export default {
     methods: {
         search: function() {
             if (this.search_value!='') {
-                console.log(this.search_value);
+                if (this.$route.query['query']!=this.search_value)
+                    this.$router.push({path: '/search', query: {query: this.search_value}});
             }
         },
         updateValue: function (value) {

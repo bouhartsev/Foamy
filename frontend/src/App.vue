@@ -56,4 +56,8 @@ h2 {
 .v-card__title {
     word-break: break-word;
 }
+
+.v-progress-circular {
+    margin-top: 50px;
+}
 </style>

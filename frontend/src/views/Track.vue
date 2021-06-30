@@ -18,13 +18,19 @@ export default {
     components: {
         Instance,
     },
+    data() {
+        return {
+            request: 'tracks/',
+        }
+    },
     computed: {
         trackData() {
-            return this.$store.state.dataAPI['tracks/'+this.$route.params.id];
+            return this.$store.state.dataAPI[this.request];
         },
     },
     mounted() {
-        this.$getDataAPI('tracks/'+this.$route.params.id);
+        this.request+=this.$route.params.id;
+        this.$getDataAPI(this.request);
     },
 }
 </script>
