@@ -1,8 +1,9 @@
 <template>
-    <Instance :data="{'id': 0,}" :list_src="searchData" minimal>
-        <template #heading>Searching for <i>"{{ request }}"</i></template>
-<!--        <template #paragraphs>{{ searchData }}</template>-->
-    </Instance>
+    <div>
+        <Instance v-for="(item, key, index) in searchData" :data="{'id': index, 'name': key}" :list_src="item" minimal>
+            <template #heading v-if="index==0">Searching for <i>"{{ request }}"</i></template>
+        </Instance>
+    </div>
 </template>
 
 <script>
@@ -15,24 +16,23 @@ export default {
     },
     computed: {
         searchData() {
-            let tracks = [];
-            if (this.tracks.length) {
-                tracks = this.tracks;
-                let result = tracks.filter(x => x.name.toLowerCase().indexOf(this.request.toLowerCase()) !== -1);
-                return result;
-            }
-            else return {};
-        },
-        tracks() {
-            return this.$store.state.dataAPI['tracks'];
+            let data = {};
+            this.instancesList.forEach(path => {
+                data[path] = this.filterData(this.$store.state.dataAPI[path]);
+            });
+            return data;
         },
         request() {
             return this.$route.query['query'];
         },
     },
+    methods: {
+        filterData: function(data=[]){
+            if (data.length)
+                return data.filter(x => x.name.toLowerCase().indexOf(this.request.toLowerCase()) !== -1);
+            else if (JSON.stringify(data) != JSON.stringify([])) return {};
+            else return [];
+        }
+    }
 }
 </script>
-
-<style scoped>
-
-</style>

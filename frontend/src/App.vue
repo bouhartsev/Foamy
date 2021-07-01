@@ -32,13 +32,7 @@ export default {
         }
     },
     created() {
-        [
-            'tracks',
-            'artists',
-            'releases',
-            'genres',
-            'playlists',
-        ].forEach(path => {
+        this.instancesList.forEach(path => {
             this.$getDataAPI(path);
         });
     },

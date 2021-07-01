@@ -1,7 +1,7 @@
 <template>
     <v-text-field
         hide-details
-        label="Search music"
+        label="Search"
         @keyup.enter="search()"
         class="search_field"
         :autofocus="autofocus"

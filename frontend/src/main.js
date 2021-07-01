@@ -16,6 +16,17 @@ Vue.prototype.$getDataAPI = function (pathAPI) {
 };
 
 Vue.mixin({
+    data() {
+        return {
+            instancesList: [
+                'tracks',
+                'artists',
+                'releases',
+                'genres',
+                'playlists',
+            ],
+        }
+    },
     methods: {
         get_poster: function (instance, placeholder = 'track.png') {
             let image = 'null';
