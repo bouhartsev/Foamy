@@ -221,7 +221,7 @@ JAZZMIN_SETTINGS = {
 
     "custom_css": None,
     "custom_js": None,
-    "show_ui_builder": False,
+    "show_ui_builder": True,
 
     ###############
     # Change view #
@@ -241,6 +241,7 @@ JAZZMIN_SETTINGS = {
 
 JAZZMIN_UI_TWEAKS = {
     "accent": "accent-info",
+    "sidebar": "sidebar-dark-info",
     "navbar": "navbar-black navbar-dark",
     "sidebar_fixed": True,
     "actions_sticky_top": True,

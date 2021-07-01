@@ -14,21 +14,12 @@ class PlaylistSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class GenreSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Genre
-        fields = '__all__'
-
-class ReleaseSerializer(serializers.ModelSerializer):
+    tracks = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
     tracksData = TrackSerializerForOther(source='tracks', many=True)
 
     class Meta:
-        model = Release
+        model = Genre
         fields = '__all__'
-
-class ReleaseSerializerForOther(serializers.ModelSerializer):
-    class Meta:
-        model = Release
-        fields = ['id', 'name', 'image', 'imageURL']
 
 class ArtistSerializer(serializers.ModelSerializer):
     tracks = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
@@ -42,6 +33,25 @@ class ArtistSerializerForOther(serializers.ModelSerializer):
     class Meta:
         model = Artist
         fields = ['id', 'name', 'pseudonym']
+
+class TrackSerializerForRelease(serializers.ModelSerializer):
+    artistsData = ArtistSerializerForOther(source='artists', many=True)
+
+    class Meta:
+        model = Track
+        fields = ['id', 'name', 'duration', 'artistsData']
+
+class ReleaseSerializer(serializers.ModelSerializer):
+    tracksData = TrackSerializerForRelease(source='tracks', many=True)
+
+    class Meta:
+        model = Release
+        fields = '__all__'
+
+class ReleaseSerializerForOther(serializers.ModelSerializer):
+    class Meta:
+        model = Release
+        fields = ['id', 'name', 'image', 'imageURL']
 
 class TrackSerializer(serializers.ModelSerializer):
     release = serializers.PrimaryKeyRelatedField(many=True, read_only=True)

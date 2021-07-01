@@ -3,13 +3,14 @@ import VueRouter from "vue-router";
 
 import Home from "../views/Home.vue";
 import About from "../views/About.vue";
+import Search from "../views/Search.vue";
 
 import Tracks from "../views/Tracks.vue";
 import Track from "../views/Track.vue";
 import Artists from "../views/Artists.vue";
 import Artist from "../views/Artist.vue";
 import Releases from "../views/Releases.vue";
-import Release from "../views/Releases.vue";
+import Release from "../views/Release.vue";
 import Genres from "../views/Genres.vue";
 import Genre from "../views/Genre.vue";
 import Playlists from "../views/Playlists.vue";
@@ -29,6 +30,11 @@ const routes = [
         path: "/about",
         name: "About",
         component: About,
+    },
+    {
+        path: "/search",
+        name: "Search",
+        component: Search,
     },
 
     {
@@ -134,6 +140,9 @@ const router = new VueRouter({
     mode: "history",
     base: process.env.BASE_URL,
     routes,
+    scrollBehavior(to, from, savedPosition) {
+      return { x: 0, y: 0 }
+    }
 });
 
 router.beforeEach(async (to, from, next) => {

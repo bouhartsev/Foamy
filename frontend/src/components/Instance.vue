@@ -4,15 +4,18 @@
             <slot name="heading"></slot>
         </h2>
         <p v-if="data === null">Loading data error</p>
-        <v-container v-else-if="data !== undefined && ('id' in data)">
-            <v-img :src="get_poster(image_src, image_placeholder)"></v-img>
+        <v-container v-else-if="data !== undefined && ('id' in data)" :style="'text-align: '+((isLoading)?'center':'inherit')">
+            <v-img v-if="!minimal" :src="get_poster(image_src, image_placeholder)"></v-img>
             <h3 class="container__title" v-if="data.pseudonym">"{{ data.pseudonym }}"</h3>
-            <h3 class="container__title" v-else>"{{ data.name }}"</h3>
+            <h3 class="container__title" v-if="data.name&&!minimal">"{{ data.name }}"</h3>
             <slot name="paragraphs"></slot>
 
-            <v-list shaped v-if="list">
+            <v-progress-circular v-if="isLoading" indeterminate color="primary"></v-progress-circular>
+            <p v-else-if="isEmpty">There are no data for {{ data.name }}</p>
+            <v-list shaped v-else-if="list">
                 <v-subheader>
-                    <slot name="list_heading">Tracks</slot>
+                    <slot name="list_heading" v-if="!minimal">Tracks</slot>
+                    <h3 class="container__title" v-else-if="data.name">{{ data.name.charAt(0).toUpperCase() + data.name.slice(1) }}</h3>
                 </v-subheader>
                 <v-list-item-group>
                     <v-list-item v-for="(track) in list" :key="track.id" link :to="'/tracks/'+track.id">
@@ -45,15 +48,22 @@ export default {
             if (this.list_src) return this.list_src;
             else if (this.list_key) return this.data[this.list_key];
             else return false;
-        }
+        },
+        isLoading() {
+            return JSON.stringify(this.list_src) == JSON.stringify({});
+        },
+        isEmpty() {
+            return JSON.stringify(this.list) == JSON.stringify([])
+        },
     },
     props: {
-        data: Object,
+        data: [Object, Array],
         image_src_key: String,
         image_placeholder: String,
-        list_src: Array,
+        list_src: [Object, Array],
         list_key: String,
         list_heading: String,
+        minimal: Boolean,
     },
 
 }

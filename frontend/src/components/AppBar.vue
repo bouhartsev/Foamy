@@ -46,8 +46,6 @@
             </template>
             <span>Theme</span>
         </v-tooltip>
-
-        <!--            <v-toolbar-title>Application</v-toolbar-title>-->
     </v-app-bar>
 </template>
 

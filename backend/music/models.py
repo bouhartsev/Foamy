@@ -27,10 +27,17 @@ class Release(models.Model):
         return str(self.name)
 
 class Artist(models.Model):
+    TYPE_CHOICES = [
+        ('Person', 'Person'),
+        ('Group', 'Group'),
+        ('Choir', 'Choir'),
+        ('Other', 'Other'),
+    ]
+
     name = models.CharField(max_length=255)
     pseudonym = models.CharField(max_length=255, blank=True,)
 
-    type = models.CharField(max_length=255, null=True, blank=True)
+    type = models.CharField(max_length=255, null=True, choices=TYPE_CHOICES)
     biography = models.TextField(null=True, blank=True)
 
     image = models.ImageField(upload_to='img/artist', blank=True, null=True)

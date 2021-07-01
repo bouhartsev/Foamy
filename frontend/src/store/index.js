@@ -6,11 +6,10 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
     state: {
-        dataAPI: {},
+        dataAPI: {}, // ITEMS: null if error, {} if loading, [] if empty, [{...},{...}] if not empty
     },
     mutations: {
         SET_DATA(state, data) {
-            // state.dataAPI[data[0]] = data[1];
             Vue.set(state.dataAPI, data[0], data[1]);
         }
     },
