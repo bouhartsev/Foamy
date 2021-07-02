@@ -40,7 +40,7 @@
 
         <v-tooltip bottom>
             <template v-slot:activator="{ on, attrs }">
-                <v-btn icon @click="$vuetify.theme.dark=!$vuetify.theme.dark" exact v-bind="attrs" v-on="on">
+                <v-btn icon @click="changeTheme" exact v-bind="attrs" v-on="on">
                     <v-icon>mdi-theme-light-dark</v-icon>
                 </v-btn>
             </template>

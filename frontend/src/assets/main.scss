@@ -1,5 +1,9 @@
 @import '~vuetify/src/styles/main.sass';
-$font-size-root: 10px;
-$material-light: map-merge($material-light, (
-  'background': black
+$font-size-root: 5px;
+$material-light: map-deep-merge($material-light, (
+  'background': black,
 ));
+//$material-light: ( cards: blue );
+:root {
+  --test-var: 'test-var';
+}

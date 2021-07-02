@@ -20,12 +20,6 @@ import AppBar from "./components/AppBar";
 
 export default {
     components: {NavigationDrawer, AppBar},
-    // computed:{
-    //     theme(){
-    //         return (this.$vuetify.theme.dark) ? 'dark' : 'light';
-    //     }
-    // },
-    // TODO: make theme session and browser default
     data() {
         return {
             openSearch: false,
@@ -35,14 +29,16 @@ export default {
         this.instancesList.forEach(path => {
             this.$getDataAPI(path);
         });
+        if (window.matchMedia("(prefers-color-scheme: dark)").matches || sessionStorage['theme']=='dark') {
+          this.changeTheme();
+        }
     },
-    methods: {
-        //
-    }
 }
 </script>
 
 <style lang="scss">
+@import "assets/main.scss";
+
 h2 {
     text-align: center;
 }

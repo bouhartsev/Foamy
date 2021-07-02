@@ -122,12 +122,17 @@ export default {
     src: url('~@/assets/SongFont.ttf') format('truetype');
 }
 
-.v-application--is-ltr .v-list-item__action:first-child, .v-application--is-ltr .v-list-item__icon:first-child {
-    margin-right: 15px;
+.v-application--is-ltr {
+    .v-list-item__action:first-child, .v-list-item__icon:first-child {
+        margin-right: 15px;
+    }
 }
-.v-list-item__icon>.v-icon {
-    width: 100%;
+.v-list-item__icon {
+    .v-icon {
+        width: 100%;
+    }
 }
+
 .navFooter {
     font-size: 0.8em;
     min-width: max-content;

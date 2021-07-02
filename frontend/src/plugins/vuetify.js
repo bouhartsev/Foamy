@@ -30,8 +30,6 @@ const opts = {
                 success: colors.white,
                 warning: colors.black,
                 anchor: colors.orange,
-
-                background: '#00bfff',
             },
             dark: {
                 primary: '#00bfff',

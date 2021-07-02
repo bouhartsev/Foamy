@@ -221,7 +221,7 @@ JAZZMIN_SETTINGS = {
 
     "custom_css": None,
     "custom_js": None,
-    "show_ui_builder": True,
+    "show_ui_builder": False,
 
     ###############
     # Change view #
