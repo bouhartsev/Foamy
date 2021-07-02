@@ -14,5 +14,14 @@
 export default {
     name: "About",
     components: this,
+    computed: {
+        agreg(){
+            let result='';
+            for (let i in this.instancesList) {
+                if (this.$store.state.dataAPI[i]) result+=this.$store.state.dataAPI[i].length+' '+i+', ';
+            }
+            return result;
+        },
+    },
 };
 </script>
