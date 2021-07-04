@@ -37,8 +37,6 @@ export default {
 </script>
 
 <style lang="scss">
-@import "assets/main.scss";
-
 h2 {
     text-align: center;
 }

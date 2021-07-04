@@ -136,10 +136,6 @@ export default {
 .navFooter {
     font-size: 0.8em;
     min-width: max-content;
-
-    a {
-        color: inherit;
-    }
 }
 
 h1 {

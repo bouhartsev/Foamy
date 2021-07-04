@@ -61,6 +61,13 @@ export default {
             search_value: '',
         }
     },
+    mounted() {
+        if (this.$router.currentRoute.name=='Search') {
+            if (this.$route.query['query']!=this.search_value)
+                this.search_value = this.$route.query['query'];
+        }
+        else this.search_value = '';
+    }
 }
 </script>
 

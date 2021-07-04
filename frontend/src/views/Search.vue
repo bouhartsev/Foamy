@@ -1,6 +1,6 @@
 <template>
     <div>
-        <Instance v-for="(item, key, index) in searchData" :data="{'id': index, 'name': key}" :list_src="item" minimal>
+        <Instance v-for="(item, key, index) in searchData" :data="{'id': index, 'name': key}" :list_src="item" minimal :url_prop="key">
             <template #heading v-if="index==0">Searching for <i>"{{ request }}"</i></template>
         </Instance>
     </div>
