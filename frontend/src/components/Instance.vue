@@ -5,7 +5,7 @@
         <v-container v-else-if="data !== undefined && ('id' in data)" :style="'text-align: '+((isLoading)?'center':'inherit')">
             <v-img v-if="!minimal" :src="get_poster(image_src, image_placeholder)"></v-img>
             <h3 class="container__title" v-if="data.pseudonym">"{{ data.pseudonym }}"</h3>
-            <h3 class="container__title" v-if="data.name&&!minimal">"{{ data.name }}"</h3>
+            <h3 class="container__title" v-else-if="data.name&&!minimal">"{{ data.name }}"</h3>
             <slot name="paragraphs"></slot>
 
             <v-progress-circular v-if="isLoading" indeterminate color="primary"></v-progress-circular>

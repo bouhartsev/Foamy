@@ -3,13 +3,13 @@
 
 <br/>
 
-![status: build](https://img.shields.io/badge/status-build-red)![version: beta](https://img.shields.io/badge/version-beta-brightgreen)![language count](https://img.shields.io/github/languages/count/bouhartsev/Foamy)
+![status: build](https://img.shields.io/badge/status-build-red)  ![version: beta](https://img.shields.io/badge/version-beta-brightgreen)  ![language count](https://img.shields.io/github/languages/count/bouhartsev/Foamy)
 
 **['Foamy'](http://foamy.std-1374.ist.mospolytech.ru/)** is the сatalog of musical compositions.  
 Author: [Matvey Bouhartsev](//bouhartsev.top)  
 Made by order of the [Moscow Polytechnic University](//mospolytech.ru).
 
-![Foamy screenshot](IMAGE!)
+![Foamy screenshot](_docs/Screenshot.png)
 
 **[http://foamy.std-1374.ist.mospolytech.ru/](http://foamy.std-1374.ist.mospolytech.ru/)**
 

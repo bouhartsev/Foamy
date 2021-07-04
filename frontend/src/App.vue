@@ -46,6 +46,6 @@ h2 {
 }
 
 .v-progress-circular {
-    margin-top: 50px;
+    margin: 50px 0;
 }
 </style>
