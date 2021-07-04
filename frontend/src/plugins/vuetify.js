@@ -13,8 +13,6 @@ import colors from 'vuetify/lib/util/colors'
 Vue.use(Vuetify)
 
 const opts = {
-    // customVariables: ['~@/assets/variables.scss'],
-    // treeShake: true,
     icons: {
         iconfont: 'mdi', // 'mdi' || 'mdiSvg' || 'md' || 'fa' || 'fa4' || 'faSvg'
     },
@@ -23,25 +21,11 @@ const opts = {
         themes: {
             light: {
                 primary: '#00bfff',
-                secondary: colors.blue,
-                accent: colors.orange,
-                error: colors.purple,
-                info: colors.yellow,
-                success: colors.white,
-                warning: colors.black,
-                anchor: colors.orange,
-
-                background: '#00bfff',
+                anchor: 'inherit',
             },
             dark: {
                 primary: '#00bfff',
-                secondary: colors.blue,
-                accent: colors.orange,
-                error: colors.purple,
-                info: colors.black,
-                success: colors.white,
-                warning: colors.yellow,
-                anchor: colors.orange,
+                anchor: 'inherit',
             },
         },
         options: { customProperties: true },

@@ -1,8 +1,6 @@
 <template>
     <div>
-        <h2>
-            <slot name="heading"></slot>
-        </h2>
+        <h2 v-if="$slots.heading"><slot name="heading"></slot></h2>
         <p v-if="data === null">Loading data error</p>
         <v-container v-else-if="data !== undefined && ('id' in data)" :style="'text-align: '+((isLoading)?'center':'inherit')">
             <v-img v-if="!minimal" :src="get_poster(image_src, image_placeholder)"></v-img>
@@ -18,7 +16,7 @@
                     <h3 class="container__title" v-else-if="data.name">{{ data.name.charAt(0).toUpperCase() + data.name.slice(1) }}</h3>
                 </v-subheader>
                 <v-list-item-group>
-                    <v-list-item v-for="(track) in list" :key="track.id" link :to="'/tracks/'+track.id">
+                    <v-list-item v-for="(track) in list" :key="track.id" link :to="'/'+url+'/'+track.id">
                         <v-list-item-icon>
                             <v-icon>play_arrow</v-icon>
                         </v-list-item-icon>
@@ -55,6 +53,11 @@ export default {
         isEmpty() {
             return JSON.stringify(this.list) == JSON.stringify([])
         },
+        url() {
+            console.log(this.url_prop);
+            if (this.url_prop) return this.url_prop;
+            else return 'tracks';
+        },
     },
     props: {
         data: [Object, Array],
@@ -64,6 +67,7 @@ export default {
         list_key: String,
         list_heading: String,
         minimal: Boolean,
+        url_prop: String,
     },
 
 }
@@ -83,6 +87,10 @@ export default {
 
 .v-list {
     clear: right;
+}
+
+p {
+    white-space: pre-line;
 }
 
 </style>

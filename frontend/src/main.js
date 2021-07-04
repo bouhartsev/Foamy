@@ -9,7 +9,6 @@ import vuetify from '@/plugins/vuetify'
 
 Vue.config.productionTip = false;
 
-// Vue.prototype.$serverAbsolutePath = '//127.0.0.1:8000';
 Vue.prototype.$getDataAPI = function (pathAPI) {
     this.$store.dispatch('setEmpty', pathAPI);
     return this.$store.dispatch('getData', pathAPI);
@@ -55,7 +54,10 @@ Vue.mixin({
             time+=seconds;
 
             return time;
-
+        },
+        changeTheme: function() {
+            this.$vuetify.theme.dark=!this.$vuetify.theme.dark;
+            sessionStorage['theme'] = (this.$vuetify.theme.dark) ? 'dark' : 'light';
         }
     }
 })

@@ -30,7 +30,7 @@ export default {
         updateValue: function (value) {
             this.$emit('update:search_value', value);
         }
-    }
+    },
 }
 </script>
 
