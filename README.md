@@ -131,5 +131,5 @@ ____
 - [Report](_docs/Foamy_Report.docx)
 - [Score sheet](_docs/Foamy_Score_sheet.docx)
 - [Mockup (Axure)](_docs/Mockup_Foamy.rp)
-- [Layout](_docs/Layout_Foamy.fig)
+- [Layout](https://www.figma.com/file/SYcSf7c7SKgGxkeLVKfdjf/Foamy)
 - [ER diagram](_docs/ER-diagram.png)
