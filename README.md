@@ -126,3 +126,10 @@ ____
     - 'Please write me a sing' ByTheButterfly
     - 'Tchaikovsky' JoannaVu
 
+## Docs
+
+- [Report](_docs/Foamy_Report.docx)
+- [Score sheet](_docs/Foamy_Score_sheet.docx)
+- [Mockup (Axure)](_docs/Mockup_Foamy.rp)
+- [Layout](_docs/Layout_Foamy.fig)
+- [ER diagram](_docs/ER-diagram.png)
