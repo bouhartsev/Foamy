@@ -31,8 +31,8 @@ environ.Env.read_env()
 SECRET_KEY = env("SECRET_KEY", default="unsafe-secret-key")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = env('DEBUG')
-# DEBUG = False
+# DEBUG = env('DEBUG')
+DEBUG = False
 
 ALLOWED_HOSTS = ['127.0.0.1','foamy.std-1374.ist.mospolytech.ru',]
 
