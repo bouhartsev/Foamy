@@ -31,8 +31,8 @@ environ.Env.read_env()
 SECRET_KEY = env("SECRET_KEY", default="unsafe-secret-key")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = env('DEBUG')
-DEBUG = False
+DEBUG = env('DEBUG')
+# DEBUG = False
 
 ALLOWED_HOSTS = ['127.0.0.1','foamy.std-1374.ist.mospolytech.ru',]
 
@@ -148,35 +148,35 @@ STATICFILES_DIRS = [
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-LOGGING = {
-    'version': 1,
-    'loggers': {
-        'django': {
-            'handlers': ['fileDebug', 'fileInfo'],
-            'level': 'DEBUG'
-        }
-    },
-    'handlers': {
-        'fileDebug': {
-            'level': 'DEBUG',
-            'class': 'logging.FileHandler',
-            'filename': BASE_DIR/'logs/debug.log',
-            'formatter': 'UsualFormat'
-        },
-        'fileInfo': {
-            'level': 'INFO',
-            'class': 'logging.FileHandler',
-            'filename': BASE_DIR/'logs/info.log',
-            'formatter': 'UsualFormat'
-        }
-    },
-    'formatters': {
-        'UsualFormat': {
-            'format': '{levelname} {asctime} {module} {process:d} {thread:d} {message}',
-            'style': '{'
-        }
-    }
-}
+# LOGGING = {
+#     'version': 1,
+#     'loggers': {
+#         'django': {
+#             'handlers': ['fileDebug', 'fileInfo'],
+#             'level': 'DEBUG'
+#         }
+#     },
+#     'handlers': {
+#         'fileDebug': {
+#             'level': 'DEBUG',
+#             'class': 'logging.FileHandler',
+#             'filename': BASE_DIR/'logs/debug.log',
+#             'formatter': 'UsualFormat'
+#         },
+#         'fileInfo': {
+#             'level': 'INFO',
+#             'class': 'logging.FileHandler',
+#             'filename': BASE_DIR/'logs/info.log',
+#             'formatter': 'UsualFormat'
+#         }
+#     },
+#     'formatters': {
+#         'UsualFormat': {
+#             'format': '{levelname} {asctime} {module} {process:d} {thread:d} {message}',
+#             'style': '{'
+#         }
+#     }
+# }
 
 X_FRAME_OPTIONS = 'SAMEORIGIN'
 
