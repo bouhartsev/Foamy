@@ -1,4 +1,5 @@
-from django.shortcuts import render
+# from django.shortcuts import render
+from django.db.models import Q, Count
 
 # Create your views here.
 
@@ -8,7 +9,10 @@ from .models import *
 
 class PlaylistViewSet(viewsets.ModelViewSet):
     serializer_class = PlaylistSerializer
-    queryset = Playlist.objects.all()
+    # queryset = Playlist.objects.all()
+    def get_queryset(self):
+        queryset = (Playlist.objects.annotate(tracks_count=Count('tracks')).filter(Q(name__contains='Easter') | ~Q(tracks_count__lt=3)))
+        return queryset
 
 class GenreViewSet(viewsets.ModelViewSet):
     serializer_class = GenreSerializer

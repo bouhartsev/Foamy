@@ -7,7 +7,7 @@ class TrackSerializerForOther(serializers.ModelSerializer):
         fields = ['id', 'name', 'duration']
 
 class PlaylistSerializer(serializers.ModelSerializer):
-    tracksData = TrackSerializerForOther(source='tracks', many=True)
+    tracksData = TrackSerializerForOther(source='tracks', many=True, read_only=True)
 
     class Meta:
         model = Playlist
@@ -15,7 +15,7 @@ class PlaylistSerializer(serializers.ModelSerializer):
 
 class GenreSerializer(serializers.ModelSerializer):
     tracks = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
-    tracksData = TrackSerializerForOther(source='tracks', many=True)
+    tracksData = TrackSerializerForOther(source='tracks', many=True, read_only=True)
 
     class Meta:
         model = Genre
@@ -23,7 +23,7 @@ class GenreSerializer(serializers.ModelSerializer):
 
 class ArtistSerializer(serializers.ModelSerializer):
     tracks = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
-    tracksData = TrackSerializerForOther(source='tracks', many=True)
+    tracksData = TrackSerializerForOther(source='tracks', many=True, read_only=True)
 
     class Meta:
         model = Artist
@@ -35,14 +35,14 @@ class ArtistSerializerForOther(serializers.ModelSerializer):
         fields = ['id', 'name', 'pseudonym']
 
 class TrackSerializerForRelease(serializers.ModelSerializer):
-    artistsData = ArtistSerializerForOther(source='artists', many=True)
+    artistsData = ArtistSerializerForOther(source='artists', many=True, read_only=True)
 
     class Meta:
         model = Track
         fields = ['id', 'name', 'duration', 'artistsData']
 
 class ReleaseSerializer(serializers.ModelSerializer):
-    tracksData = TrackSerializerForRelease(source='tracks', many=True)
+    tracksData = TrackSerializerForRelease(source='tracks', many=True, read_only=True)
 
     class Meta:
         model = Release
@@ -55,9 +55,9 @@ class ReleaseSerializerForOther(serializers.ModelSerializer):
 
 class TrackSerializer(serializers.ModelSerializer):
     release = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
-    releaseData = ReleaseSerializerForOther(source='release', many=True)
-    artistsData = ArtistSerializerForOther(source='artists', many=True)
-    genreData = GenreSerializer(source='genre', many=True)
+    releaseData = ReleaseSerializerForOther(source='release', many=True, read_only=True)
+    artistsData = ArtistSerializerForOther(source='artists', many=True, read_only=True)
+    genreData = GenreSerializer(source='genre', many=True, read_only=True)
 
     class Meta:
         model = Track

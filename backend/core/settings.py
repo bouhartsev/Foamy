@@ -34,7 +34,7 @@ SECRET_KEY = env("SECRET_KEY", default="unsafe-secret-key")
 DEBUG = env('DEBUG')
 # DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1','foamy.std-1374.ist.mospolytech.ru',]
+ALLOWED_HOSTS = ['127.0.0.1','localhost','foamy.std-1374.ist.mospolytech.ru',]
 
 # Application definition
 INSTALLED_APPS = [
@@ -48,6 +48,9 @@ INSTALLED_APPS = [
     'rest_framework',
     'corsheaders',
     'music.apps.MusicConfig',
+    "import_export",
+    'simple_history',
+    "django_cron",
 ]
 
 MIDDLEWARE = [
@@ -59,6 +62,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'simple_history.middleware.HistoryRequestMiddleware',
 ]
 
 ROOT_URLCONF = 'core.urls'
@@ -182,6 +186,7 @@ X_FRAME_OPTIONS = 'SAMEORIGIN'
 
 JAZZMIN_SETTINGS = {
     "site_title": "Foamy Admin",
+    "site_brand": "Foamy Admin",
     "site_header": "Foamy Admin",
     "site_logo": "img/icons/android-chrome-512x512.png",
     "site_logo_classes": "img-circle",
@@ -259,5 +264,9 @@ mimetypes.add_type("text/javascript", ".js", True)
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.IsAuthenticatedOrReadOnly',
-    ]
+    ],
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
 }
+CRON_CLASSES = [
+    "music.cron.CreatePlaylist",
+]

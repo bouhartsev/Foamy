@@ -1,10 +1,12 @@
 from django.db import models
+from simple_history.models import HistoricalRecords
 
 # Create your models here.
 
 class Playlist(models.Model):
     name = models.CharField(max_length=255)
     tracks = models.ManyToManyField('Track', related_name='playlists')
+    history = HistoricalRecords()
 
     def __str__(self):
         return str(self.name)

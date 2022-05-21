@@ -7,7 +7,7 @@ router.register(r'tracks', TrackViewSet)
 router.register(r'artists', ArtistViewSet)
 router.register(r'releases', ReleaseViewSet)
 router.register(r'genres', GenreViewSet)
-router.register(r'playlists', PlaylistViewSet)
+router.register(r'playlists', PlaylistViewSet, basename="Playlist")
 
 urlpatterns = [
     path("", include(router.urls)),

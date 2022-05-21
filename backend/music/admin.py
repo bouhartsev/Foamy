@@ -1,11 +1,14 @@
 from django.contrib import admin
 from django.contrib.auth.models import Group, User
 from django.contrib.auth.admin import GroupAdmin, UserAdmin
+from import_export import resources
+from import_export.admin import ExportMixin
+from simple_history.admin import SimpleHistoryAdmin
 from .models import *
 
 # Register your models here.
 
-class PlaylistAdmin(admin.ModelAdmin):
+class PlaylistAdmin(SimpleHistoryAdmin):
     list_display = ('name',)
     search_fields = ('name',)
 
@@ -22,7 +25,17 @@ class ArtistAdmin(admin.ModelAdmin):
     search_fields = ('name',)
     list_filter = ('type',)
 
-class TrackAdmin(admin.ModelAdmin):
+class TrackResource(resources.ModelResource):
+    class Meta:
+        model = Track
+
+    def dehydrate_genre(self, obj):
+        return ", ".join([g.name for g in obj.genre.all()])
+    def dehydrate_artists(self, obj):
+        return ", ".join([g.name for g in obj.artists.all()])
+
+class TrackAdmin(ExportMixin, admin.ModelAdmin):
+    resource_class = TrackResource
     list_display = ('name', 'get_genres', 'duration')
     search_fields = ('name','duration')
 
